@@ -11,6 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,24 +27,36 @@ public class Hero {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank(message = "Enter revolution hero name.")
 	@Column(name = "revolution_hero_name")
 	private String revolutionHeroName;
+	
+	//@NotNull(message = "Enter age of revolution hero.")
+	@Max(value = 70, message = "Age less than 70.")
+	//@Max(value = 60)
+	@Positive(message = "Age can not be negative.")
+	@Digits(integer = 2, fraction = 0, message = "Age must be positive and only 2 digits number.")
 	private int age;
 	
 	@Column(name = "date_of_dead")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
+	@NotNull(message = "Please select date of dead.")
 	private Date dateOfDead;
 	
+	@NotBlank(message = "Enter state or city name of revolution hero name.")
 	@Column(name = "state_name")
 	private String stateName;
 	
+	@NotBlank(message = "Enter village or ward name of revolution hero name.")
 	@Column(name = "village_or_ward_name")
 	private String villageName;
 	
+	@NotNull(message = "Please select revolution hero division.")
 	@Enumerated(EnumType.STRING)
 	private Division division;
 	
+	@NotBlank(message = "Enter how to dead (eg.Head shoot).")
 	@Column(name = "how_to_dead")
 	private String howToDead;
 	
@@ -67,6 +85,10 @@ public class Hero {
 	}
 
 	public void setAge(int age) {
+		/*
+		 * if (age < 0) { throw new
+		 * IllegalArgumentException("Age can not be negative."); }
+		 */
 		this.age = age;
 	}
 

@@ -12,37 +12,45 @@
 			<div class="row">
 				<div class="col">
 					<label>Name</label>
-					<input type="text" class="form-control" th:field="*{revolutionHeroName}" placeholder="Enter revolution hero name">
+					<input type="text" class="form-control" th:field="*{revolutionHeroName}" th:classappend="${#fields.hasErrors('revolutionHeroName') ? 'is-invalid' : ''}" placeholder="Enter revolution hero name">
+					<span class="invalid-feedback" th:if="${#fields.hasErrors('revolutionHeroName')}" th:errors="*{revolutionHeroName}" style="color: red;"></span>
 				</div>
 				<div class="col">
 					<label>Age</label>
-					<input type="number" class="form-control" th:field="*{age}">
+					<input type="number" class="form-control" th:field="*{age}" th:classappend="${#fields.hasErrors('age') ? 'is-invalid' : ''}">
+					<span class="invalid-feedback" th:if="${#fields.hasErrors('age')}" th:errors="*{age}" style="color: red;"></span>
 				</div>
 				<div class="col">
 					<label>Date Of Dead</label>
-					<input type="date" class="form-control" th:field="*{dateOfDead}">
+					<input type="date" class="form-control" th:field="*{dateOfDead}" th:classappend="${#fields.hasErrors('dateOfDead') ? 'is-invalid' : ''}">
+					<span class="invalid-feedback" th:if="${#fields.hasErrors('dateOfDead')}" th:errors="*{dateOfDead}" style="color: red;"></span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<label>(Where died?) Division</label>
 					<select class="form-control" th:field="*{division}">
+						<option value="0">-Selected division-</option>
 						<option th:each="d : ${T(com.nw.revolution.model.Division).values()}" th:value="${d.name}" th:text="${d.name}"></option>
 					</select>
+					<span class="invalid-feedback" th:if="${#fields.hasErrors('division')}" th:errors="*{division}" style="color: red;"></span>
 				</div>
 				<div class="col">
 					<label>State or City</label>
-					<input type="text" class="form-control" th:field="*{stateName}">
+					<input type="text" class="form-control" th:field="*{stateName}" th:classappend="${#fields.hasErrors('stateName') ? 'is-invalid' : ''}">
+					<span class="invalid-feedback" th:if="${#fields.hasErrors('stateName')}" th:errors="*{stateName}" style="color: red;"></span>
 				</div>
 				<div class="col">
 					<label>Village or Ward</label>
-					<input type="text" class="form-control" th:field="*{villageName}">
+					<input type="text" class="form-control" th:field="*{villageName}" th:classappend="${#fields.hasErrors('villageName') ? 'is-invalid' : ''}">
+					<span class="invalid-feedback" th:if="${#fields.hasErrors('villageName')}" th:errors="*{villageName}" style="color: red;"></span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
 					<label>How To Dead</label>
-					<input type="text" class="form-control" th:field="*{howToDead}">
+					<input type="text" class="form-control" th:field="*{howToDead}" th:classappend="${#fields.hasErrors('howToDead') ? 'is-invalid' : ''}">
+					<span class="invalid-feedback" th:if="${#fields.hasErrors('howToDead')}" th:errors="*{howToDead}" style="color: red;"></span>
 				</div>
 			</div>
 			<div>
