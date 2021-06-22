@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Myanmar - Revolution</title>
+</head>
+<body>
+	<header th:replace="fragments/header"></header>
+	<div class="container">
+		<!-- <a type="button" class="ml-2 mt-2 btn btn-danger" style="display: inline;" th:href="@{/hero/create}">Add Hero</a> -->
+		<form action="#">
+			<div class="mt-4 input-group mb-3">
+				<!-- <div class="input-group-prepend"> -->
+					<a href="#" type="button" class="btn btn-danger" th:href="@{/hero/create}">Add Hero</a>
+				<!-- </div> -->
+				<input type="text" class="ml-2 form-control" style="border-color: #dc3545; margin-left: 5px;" placeholder="Enter you want to search hero name.">
+				<input type="button" class="btn btn-danger" value="Search">
+			</div>
+		</form>
+		<table class="table">
+			<thead style="background-color: #dc3545; color: white;">
+				<tr>
+					<!-- <th>ID</th> -->
+					<th>Name</th>
+					<th>Age</th>
+					<th>Date Of Dead</th>
+					<th>Where Died</th>
+					<th></th>
+					<th></th>
+					<th>How To Dead</th>
+					<th>Reason Of Dead</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="hero : ${heros}">
+					<!-- <td><a href="#" style="text-decoration: none;"
+						th:href="@{/hero/detail/{id}(id=${hero.id})}" th:text="${hero.id}"></a></td> -->
+					<td>
+						<a href="#" style="text-decoration: none;" th:href="@{/hero/detail/{id}(id=${hero.id})}" th:text="${hero.revolutionHeroName}"></a>
+					</td>
+					<td th:text="${hero.age}"></td>
+					<td th:text="${#dates.format(hero.dateOfDead, 'dd/MM/yyyy')}"></td>
+					<td
+						th:text="${hero.division} + ' Division, ' + ${hero.stateName} + ' State, ' + ${hero.villageName}"></td>
+					<td></td>
+					<td></td>
+					<td>Head shoot</td>
+					<td>Protesting against the Myanmar Military Coup</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<footer th:replace="fragments/footer"></footer>
+</body>
+</html>

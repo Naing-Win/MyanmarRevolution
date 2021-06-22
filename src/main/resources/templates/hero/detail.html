@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Detail - Hero</title>
+</head>
+<body>
+	<header th:replace="fragments/header"></header>
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="card" style="width: 20rem;">
+					<!-- <div class="card-header" style="text-align: center;">Hero Information</div> -->
+					<img alt="..." style="height: 28rem;" th:src="@{/images/Ma Kyal Sin.jpg}">
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="card" style="width: 20rem;">
+					<div class="card-header bg-danger"><p style="text-align: center; color: white; font-size: 20px;">Detail Of Revolution Hero</p></div>
+					<div class="card-body" style="background-color: #dc3545;">
+						<div class="table">
+							<table>
+								<tbody style="color: white;">
+									<tr>
+										<th>Name</th>
+										<td th:text="${hero.revolutionHeroName}"></td>
+									</tr>
+									<tr>
+										<th>Age</th>
+										<td th:text="${hero.age} + ' years'"></td>
+									</tr>
+									<tr>
+										<th>Date Of Dead</th>
+										<td th:text="${#dates.format(hero.dateOfDead, 'dd/MM/yyyy')}"></td>
+									</tr>
+									<tr>
+										<th>Where Died</th>
+										<td th:text="${hero.division} + ' Division, ' + ${hero.stateName} + ' State, ' + ${hero.villageName}"></td>
+									</tr>
+									<tr>
+										<th>Reason Of Dead</th>
+										<td>Protesting against the Myanmar Military Coup</td>
+									</tr>
+									<tr>
+										<th>How to dead</th>
+										<td th:text="${hero.howToDead}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="card-footer bg-danger">
+						<a type="button" href="#" style="background-color: #f9051d; border-color: darkred;" class="btn btn-danger btn-sm">Edit</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="fragments/footer"></footer>
+</body>
+</html>

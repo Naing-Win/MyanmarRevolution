@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Create - Hero</title>
+</head>
+<body>
+	<header th:replace="fragments/header"></header>
+	<div class="container mt-4">
+		<form action="#" th:action="@{/hero/create}" th:object="${hero}" method="post">
+		<div class="form-group">
+			<div class="row">
+				<div class="col">
+					<label>Name</label>
+					<input type="text" class="form-control" th:field="*{revolutionHeroName}" placeholder="Enter revolution hero name">
+				</div>
+				<div class="col">
+					<label>Age</label>
+					<input type="number" class="form-control" th:field="*{age}">
+				</div>
+				<div class="col">
+					<label>Date Of Dead</label>
+					<input type="date" class="form-control" th:field="*{dateOfDead}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<label>(Where died?) Division</label>
+					<select class="form-control" th:field="*{division}">
+						<option th:each="d : ${T(com.nw.revolution.model.Division).values()}" th:value="${d.name}" th:text="${d.name}"></option>
+					</select>
+				</div>
+				<div class="col">
+					<label>State or City</label>
+					<input type="text" class="form-control" th:field="*{stateName}">
+				</div>
+				<div class="col">
+					<label>Village or Ward</label>
+					<input type="text" class="form-control" th:field="*{villageName}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<label>How To Dead</label>
+					<input type="text" class="form-control" th:field="*{howToDead}">
+				</div>
+			</div>
+			<div>
+				<input type="submit" class="btn btn-danger mt-2" value="Create">
+			</div>
+		</div>
+		</form>
+	</div>
+	<footer th:replace="fragments/footer"></footer>
+</body>
+</html>
