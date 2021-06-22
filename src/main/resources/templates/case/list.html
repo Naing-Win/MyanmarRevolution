@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>WhatHappeningInMyanmar</title>
+</head>
+<body>
+	<header th:replace="fragments/header"></header>
+	<div class="container">
+		<form action="#">
+			<div class="mt-4 input-group mb-3">
+				<a href="#" type="button" class="btn btn-danger" th:href="@{/case/create}">Add Case</a>
+				<input type="text" class="ml-2 form-control" style="border-color: #dc3545; margin-left: 5px;" placeholder="Enter you want to search case in Myanmar.">
+				<input type="button" class="btn btn-danger" value="Search">
+			</div>
+		</form>
+		<table class="table">
+			<thead style="background-color: #dc3545; color: white;">
+				<tr>
+					<th>Image</th>
+					<th>Case Title</th>
+					<th>Date Of Case</th>
+					<th>Where happened</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="c : ${cases}">
+					<td>
+						<a href="#" th:href="@{/case/detail/{id}(id=${c.id})}">
+							<img style="width: 60px; height: 65px;" alt="..." th:src="@{${c.getPhotosPath}}">
+						</a>
+					</td>
+					<td th:text="${c.caseTitle}"></td>
+					<td th:text="${#dates.format(c.dateOfCase, 'dd/MM/yyyy HH:mm a')}"></td>
+					<td th:text="${c.division} + ' Region, ' + ${c.cityOrState} + ' State, ' + ${c.villageOrWard}"></td>
+					<td th:text="${c.description}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<footer th:replace="fragments/footer"></footer>
+</body>
+</html>

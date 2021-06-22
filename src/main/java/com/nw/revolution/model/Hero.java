@@ -1,5 +1,6 @@
 package com.nw.revolution.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,7 +14,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -21,8 +21,13 @@ import javax.validation.constraints.Positive;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class Hero {
+public class Hero implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -44,11 +49,11 @@ public class Hero {
 	@NotNull(message = "Please select date of dead.")
 	private Date dateOfDead;
 	
-	@NotBlank(message = "Enter state or city name of revolution hero name.")
+	@NotBlank(message = "Enter state or city name of revolution hero.")
 	@Column(name = "state_name")
 	private String stateName;
 	
-	@NotBlank(message = "Enter village or ward name of revolution hero name.")
+	@NotBlank(message = "Enter village or ward name of revolution hero.")
 	@Column(name = "village_or_ward_name")
 	private String villageName;
 	
@@ -132,22 +137,4 @@ public class Hero {
 		this.howToDead = howToDead;
 	}
 	
-}
-
-enum Division {
-	Magwe, 
-	Yangon, 
-	Mandalay, 
-	Thaninthayi, 
-	Ayeyarwaddy, 
-	Bago, 
-	Sagaing, 
-	Naypyitaw, 
-	Mon, 
-	Rakhine, 
-	Kayin, 
-	Kayah, 
-	Shan, 
-	Chin, 
-	Kachin
 }

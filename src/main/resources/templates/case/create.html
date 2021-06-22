@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>WhatHappeningInMyanmar</title>
+</head>
+<body>
+	<header th:replace="fragments/header"></header>
+	<div class="container mt-4">
+		<form action="#" th:action="@{/case/create}" th:object="${coup}" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<div class="row">
+					<div class="col">
+						<label>Case Title</label>
+						<input type="text" class="form-control" th:field="*{caseTitle}" placeholder="Enter case title.">
+					</div>
+					<div class="col">
+						<label>Date Of Case</label>
+						<input type="datetime-local" class="form-control" th:field="*{dateOfCase}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<label>(Where happened?) Division</label>
+						<select class="form-control" th:field="*{division}">
+							<option th:value="0">-Selected one-</option>
+							<option th:each="d : ${T(com.nw.revolution.model.Division).values()}" th:value="${d.name}" th:text="${d.name}"></option>
+						</select>
+					</div>
+					<div class="col">
+						<label>City Or State</label>
+						<input type="text" class="form-control" th:field="*{cityOrState}">
+					</div>
+					<div class="col">
+						<label>Village Or Ward</label>
+						<input type="text" class="form-control" th:field="*{villageOrWard}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<label>Case Description</label>
+						<textarea rows="5" cols="7" class="form-control" th:field="*{description}"></textarea>
+					</div>
+					<div class="col">
+						<label>Case Image</label>
+						<input required type="file" name="file" accept="image/jpg, image/jpeg" class="form-control">
+					</div>
+				</div>
+				<div>
+					<input type="submit" class="mt-2 btn btn-danger" value="Create">
+				</div>
+			</div>
+		</form>
+	</div>
+	<footer th:replace="fragments/footer"></footer>
+</body>
+</html>

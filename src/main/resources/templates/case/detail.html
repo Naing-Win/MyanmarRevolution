@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>WhatHappeningInMyanmar</title>
+</head>
+<body>
+	<header th:replace="fragments/header"></header>
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="card">
+					<img alt="..." th:src="@{${case.getPhotosPath}}">
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="card" style="width: 30rem;">
+					<div class="card-header bg-danger"><p style="text-align: center; color: white; font-size: 20px;">Detail Of Revolution Hero</p></div>
+					<div class="card-body" style="background-color: #dc3545;">
+						<div class="table">
+							<table>
+								<tbody style="color: white;">
+									<tr>
+										<th>Case Title</th>
+										<td th:text="${case.caseTitle}"></td>
+									</tr>
+									<tr>
+										<th>Date Of Case</th>
+										<td th:text="${#dates.format(case.dateOfCase, 'dd/MM/yyyy HH:mm a')}"></td>
+									</tr>
+									<tr>
+										<th>Where happened</th>
+										<td th:text="${case.division} + ' Region, ' + ${case.cityOrState} + ' State, ' + ${case.villageOrWard}"></td>
+									</tr>
+									<tr>
+										<th>Description</th>
+										<td th:text="${case.description}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="card-footer bg-danger">
+						<a type="button" href="#" style="background-color: #f9051d; border-color: darkred;" class="btn btn-danger btn-sm">Edit</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="fragments/footer"></footer>
+</body>
+</html>
