@@ -1,4 +1,2 @@
 # MyanmarRevolution
-
-# Revolution Hero can registered.
-# LIst Revolution Heros.
+Information about Myanmar during Military Coup.
