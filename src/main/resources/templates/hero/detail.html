@@ -11,7 +11,7 @@
 			<div class="col-sm-6">
 				<div class="card" style="width: 20rem;">
 					<!-- <div class="card-header" style="text-align: center;">Hero Information</div> -->
-					<img alt="..." style="height: 28rem;" th:src="@{/images/Ma Kyal Sin.jpg}">
+					<img alt="..." style="height: 28rem;" th:src="@{${hero.getPhotosPath}}">
 				</div>
 			</div>
 			<div class="col-sm-6">
@@ -50,7 +50,7 @@
 						</div>
 					</div>
 					<div class="card-footer bg-danger">
-						<a type="button" href="#" style="background-color: #f9051d; border-color: darkred;" class="btn btn-danger btn-sm">Edit</a>
+						<a type="button" href="#" th:href="@{/hero/edit/{id}(id=${hero.id})}" style="background-color: #f9051d; border-color: darkred;" class="btn btn-danger btn-sm">Edit</a>
 					</div>
 				</div>
 			</div>

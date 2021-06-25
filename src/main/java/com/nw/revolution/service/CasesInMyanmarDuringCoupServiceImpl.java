@@ -32,4 +32,10 @@ public class CasesInMyanmarDuringCoupServiceImpl implements CasesInMyanmarDuring
 		return casesInMyanmarDuringCoupRepository.getById(id);
 	}
 
+	@Override
+	public List<CasesInMyanmarDuringCoup> findByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return casesInMyanmarDuringCoupRepository.findByKeyword(keyword);
+	}
+
 }

@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,24 +31,32 @@ public class CasesInMyanmarDuringCoup implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank(message = "Enter case title.")
 	@Column(name = "case_title")
 	private String caseTitle;
+	
+	@NotBlank(message = "Enter case description.")
 	private String description;
 	
 	@Column(name = "date_of_case")
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull(message = "Please select date of case.")
 	private Date dateOfCase;
 	
+	@NotNull(message = "Please select division.")
 	@Enumerated(EnumType.STRING)
 	private Division division;
 	
+	@NotBlank(message = "Enter state or city name.")
 	@Column(name = "city_or_state")
 	private String cityOrState;
 	
+	@NotBlank(message = "Enter village or ward.")
 	@Column(name = "village_or_ward")
 	private String villageOrWard;
 	
+	@NotBlank(message = "Please select a image file.")
 	@Column(name = "image_for_case")
 	private String imageForCase;
 	

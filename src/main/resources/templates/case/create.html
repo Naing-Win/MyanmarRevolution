@@ -12,11 +12,13 @@
 				<div class="row">
 					<div class="col">
 						<label>Case Title</label>
-						<input type="text" class="form-control" th:field="*{caseTitle}" placeholder="Enter case title.">
+						<input type="text" class="form-control" th:field="*{caseTitle}" th:classappend="${#fields.hasErrors('caseTitle') ? 'is-invalid' : ''}" placeholder="Enter case title.">
+						<span class="invalid-feedback" th:if="${#fields.hasErrors('caseTitle')}" th:errors="*{caseTitle}" style="color: red;"></span>
 					</div>
 					<div class="col">
 						<label>Date Of Case</label>
-						<input type="datetime-local" class="form-control" th:field="*{dateOfCase}">
+						<input type="datetime-local" class="form-control" th:field="*{dateOfCase}" th:classappend="${#fields.hasErrors('dateOfCase') ? 'is-invalid' : ''}">
+						<span class="invalid-feedback" th:if="${#fields.hasErrors('dateOfCase')}" th:errors="*{dateOfCase}" style="color: red;"></span>
 					</div>
 				</div>
 				<div class="row">
@@ -26,20 +28,24 @@
 							<option th:value="0">-Selected one-</option>
 							<option th:each="d : ${T(com.nw.revolution.model.Division).values()}" th:value="${d.name}" th:text="${d.name}"></option>
 						</select>
+						<span class="invalid-feedback" th:if="${#fields.hasErrors('division')}" th:errors="*{division}" style="color: red;"></span>
 					</div>
 					<div class="col">
 						<label>City Or State</label>
-						<input type="text" class="form-control" th:field="*{cityOrState}">
+						<input type="text" class="form-control" th:field="*{cityOrState}" th:classappend="${#fields.hasErrors('cityOrState') ? 'is-invalid' : ''}">
+						<span class="invalid-feedback" th:if="${#fields.hasErrors('cityOrState')}" th:errors="*{cityOrState}" style="color: red;"></span>
 					</div>
 					<div class="col">
 						<label>Village Or Ward</label>
-						<input type="text" class="form-control" th:field="*{villageOrWard}">
+						<input type="text" class="form-control" th:field="*{villageOrWard}" th:classappend="${#fields.hasErrors('villageOrWard') ? 'is-invalid' : ''}">
+						<span class="invalid-feedback" th:if="${#fields.hasErrors('villageOrWard')}" th:errors="*{villageOrWard}" style="color: red;"></span>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col">
 						<label>Case Description</label>
-						<textarea rows="5" cols="7" class="form-control" th:field="*{description}"></textarea>
+						<textarea rows="5" cols="7" class="form-control" th:field="*{description}" th:classappend="${#fields.hasErrors('description') ? 'is-invalid' : ''}"></textarea>
+						<span class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: red;"></span>
 					</div>
 					<div class="col">
 						<label>Case Image</label>

@@ -65,6 +65,10 @@ public class Hero implements Serializable {
 	@Column(name = "how_to_dead")
 	private String howToDead;
 	
+	@NotBlank(message = "Please select a image file.")
+	@Column(name = "image_for_hero")
+	private String imageForHero;
+	
 	public Hero() {
 		// TODO Auto-generated constructor stub
 	}
@@ -136,5 +140,19 @@ public class Hero implements Serializable {
 	public void setHowToDead(String howToDead) {
 		this.howToDead = howToDead;
 	}
+
+	public String getImageForHero() {
+		return imageForHero;
+	}
+
+	public void setImageForHero(String imageForHero) {
+		this.imageForHero = imageForHero;
+	}
 	
+	public String getPhotosPath() {
+		if (imageForHero == null || id == null) {
+			return null;
+		}
+		return "/images/hero/" + id + "/" + imageForHero;
+	}
 }

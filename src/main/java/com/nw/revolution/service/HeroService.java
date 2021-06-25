@@ -6,7 +6,8 @@ import com.nw.revolution.model.Hero;
 
 public interface HeroService {
 
-	public void save(Hero hero);
+	public Hero save(Hero hero);
 	public List<Hero> findAll();
 	public Hero detailHeroById(int id);
+	public List<Hero> findHeroByKeyword(String keyword);
 }

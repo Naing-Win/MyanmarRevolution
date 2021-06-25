@@ -7,11 +7,11 @@
 <body>
 	<header th:replace="fragments/header"></header>
 	<div class="container">
-		<form action="#">
-			<div class="mt-4 input-group mb-3">
+		<form action="#" th:action="@{/case/list}">
+			<div class="mt-3 input-group mb-3">
 				<a href="#" type="button" class="btn btn-danger" th:href="@{/case/create}">Add Case</a>
-				<input type="text" class="ml-2 form-control" style="border-color: #dc3545; margin-left: 5px;" placeholder="Enter you want to search case in Myanmar.">
-				<input type="button" class="btn btn-danger" value="Search">
+				<input type="text" class="ml-2 form-control" name="keyword" id="keyword" style="border-color: #dc3545; margin-left: 5px;" placeholder="Enter you want to search case in Myanmar.">
+				<input type="submit" class="btn btn-danger" value="Search">
 			</div>
 		</form>
 		<table class="table">

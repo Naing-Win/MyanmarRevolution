@@ -15,9 +15,9 @@ public class HeroServiceImpl implements HeroService {
 	private HeroRepository heroRepository;
 
 	@Override
-	public void save(Hero hero) {
+	public Hero save(Hero hero) {
 		// TODO Auto-generated method stub
-		heroRepository.save(hero);
+		return heroRepository.save(hero);
 	}
 
 	@Override
@@ -30,6 +30,12 @@ public class HeroServiceImpl implements HeroService {
 	public Hero detailHeroById(int id) {
 		// TODO Auto-generated method stub
 		return heroRepository.getById(id);
+	}
+
+	@Override
+	public List<Hero> findHeroByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return heroRepository.findHeroByKeyword(keyword);
 	}
 
 }

@@ -10,12 +10,12 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="card">
-					<img alt="..." th:src="@{${case.getPhotosPath}}">
+					<img style="width: auto; height: 28rem;" alt="..." th:src="@{${case.getPhotosPath}}">
 				</div>
 			</div>
 			<div class="col-sm-6">
-				<div class="card" style="width: 30rem;">
-					<div class="card-header bg-danger"><p style="text-align: center; color: white; font-size: 20px;">Detail Of Revolution Hero</p></div>
+				<div class="card" style="width: 27rem;">
+					<div class="card-header bg-danger"><p style="text-align: center; color: white; font-size: 20px;">Case Detail (WhatHappeningInMyanmar)</p></div>
 					<div class="card-body" style="background-color: #dc3545;">
 						<div class="table">
 							<table>
@@ -41,7 +41,7 @@
 						</div>
 					</div>
 					<div class="card-footer bg-danger">
-						<a type="button" href="#" style="background-color: #f9051d; border-color: darkred;" class="btn btn-danger btn-sm">Edit</a>
+						<a type="button" href="#" th:href="@{/case/edit/{id}(id=${case.id})}" style="background-color: #f9051d; border-color: darkred;" class="btn btn-danger btn-sm">Edit</a>
 					</div>
 				</div>
 			</div>

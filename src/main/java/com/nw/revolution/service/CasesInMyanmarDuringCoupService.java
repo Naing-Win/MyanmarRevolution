@@ -11,5 +11,7 @@ public interface CasesInMyanmarDuringCoupService {
 	public List<CasesInMyanmarDuringCoup> findAll();
 	
 	public CasesInMyanmarDuringCoup detailCaseById(int id);
+	
+	public List<CasesInMyanmarDuringCoup> findByKeyword(String keyword);
 
 }

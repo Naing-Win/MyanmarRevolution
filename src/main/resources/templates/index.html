@@ -8,19 +8,20 @@
 	<header th:replace="fragments/header"></header>
 	<div class="container">
 		<!-- <a type="button" class="ml-2 mt-2 btn btn-danger" style="display: inline;" th:href="@{/hero/create}">Add Hero</a> -->
-		<form action="#">
-			<div class="mt-4 input-group mb-3">
+		<form action="#" th:action="@{/hero/list}">
+			<div class="mt-3 input-group mb-3">
 				<!-- <div class="input-group-prepend"> -->
 					<a href="#" type="button" class="btn btn-danger" th:href="@{/hero/create}">Add Hero</a>
 				<!-- </div> -->
-				<input type="text" class="ml-2 form-control" style="border-color: #dc3545; margin-left: 5px;" placeholder="Enter you want to search hero name.">
-				<input type="button" class="btn btn-danger" value="Search">
+				<input type="text" name="keyword" class="ml-2 form-control" style="border-color: #dc3545; margin-left: 5px;" placeholder="Enter you want to search hero name.">
+				<input type="submit" class="btn btn-danger" value="Search">
 			</div>
 		</form>
 		<table class="table">
 			<thead style="background-color: #dc3545; color: white;">
 				<tr>
 					<!-- <th>ID</th> -->
+					<th>Image</th>
 					<th>Name</th>
 					<th>Age</th>
 					<th>Date Of Dead</th>
@@ -35,6 +36,11 @@
 				<tr th:each="hero : ${heros}">
 					<!-- <td><a href="#" style="text-decoration: none;"
 						th:href="@{/hero/detail/{id}(id=${hero.id})}" th:text="${hero.id}"></a></td> -->
+					<td>
+						<a href="#" th:href="@{/hero/detail/{id}(id=${hero.id})}">
+							<img style="width: 60px; height: 65px;" alt="..." th:src="@{${hero.getPhotosPath}}">
+						</a>
+					</td>
 					<td>
 						<a href="#" style="text-decoration: none;" th:href="@{/hero/detail/{id}(id=${hero.id})}" th:text="${hero.revolutionHeroName}"></a>
 					</td>

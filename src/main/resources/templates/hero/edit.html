@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Create - Hero</title>
+<title>Myanmar - Revolution</title>
 </head>
 <body>
 	<header th:replace="fragments/header"></header>
 	<div class="container mt-4">
-		<form action="#" th:action="@{/hero/create}" th:object="${hero}" method="post" enctype="multipart/form-data">
+		<form action="#" th:action="@{/hero/edit/{id}(id=${hero.id})}" th:object="${hero}" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<div class="row">
 				<div class="col">
@@ -54,12 +54,12 @@
 				</div>
 				<div class="col-sm-4">
 					<label>Image</label>
-					<input required="required" type="file" name="file" class="form-control" accept="image/jpg, image/jpeg" th:classappend="${#fields.hasErrors('imageForHero') ? 'is-invalid' : ''}">
+					<input required="required" type="file" name="file" class="form-control" accept="image/jpg, image/jpeg" th:classsappend="${#fields.hasErrors('imageForHero') ? 'is-invalid' : ''}">
 					<span class="invalid-feedback" th:if="${#fields.hasErrors('imageForHero')}" th:errors="*{imageForHero}" style="color: red;"></span>
 				</div>
 			</div>
 			<div>
-				<input type="submit" class="btn btn-danger mt-2" value="Create">
+				<input type="submit" class="btn btn-danger mt-2" value="Update">
 			</div>
 		</div>
 		</form>
