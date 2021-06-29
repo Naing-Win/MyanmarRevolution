@@ -1,10 +1,14 @@
 package com.nw.revolution.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,12 +33,15 @@ public class CasesInMyanmarDuringCoupController {
 	
 	@GetMapping("/list")
 	private String casesInMyanmar(Model model, String keyword) {
+		/*
 		if (keyword != null) {
 			model.addAttribute("cases", casesInMyanmarDuringCoupService.findByKeyword(keyword));
 		} else {
 			model.addAttribute("cases", casesInMyanmarDuringCoupService.findAll());
 		}
 		return "case/list";
+		*/
+		return getPaginated(1, "caseTitle", "asc", keyword, model);
 	}
 	
 	@GetMapping("/create")
@@ -124,4 +131,23 @@ public class CasesInMyanmarDuringCoupController {
 		return "case/list";
 	}
 	*/
+	
+	@GetMapping("/page/{pageNo}")
+	public String getPaginated(@PathVariable("pageNo") int pageNo, @RequestParam("sortField") String sortField, @RequestParam("sortDir") String sortDir, @Param("keyword") String keyword, Model model) {
+		int pageSize = 4;
+		Page<CasesInMyanmarDuringCoup> page = casesInMyanmarDuringCoupService.getPaginated(pageNo, pageSize, sortField, sortDir);
+		List<CasesInMyanmarDuringCoup> cases = page.getContent();
+		model.addAttribute("currentPage", pageNo);
+		model.addAttribute("totalPages", page.getTotalPages());
+		model.addAttribute("totalItems", page.getTotalElements());
+		model.addAttribute("sortField", sortField);
+		model.addAttribute("sortDir", sortDir);
+		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+		if (keyword != null) {
+			model.addAttribute("cases", casesInMyanmarDuringCoupService.findByKeyword(keyword, PageRequest.of(pageNo - 1, pageSize)));
+		} else {
+			model.addAttribute("cases", cases);
+		}
+		return "case/list";
+	}
 }

@@ -38,6 +38,27 @@
 				</tr>
 			</tbody>
 		</table>
+		<div th:if="${totalPages > 1}">
+			<div class="row col-sm-10">
+				<div class="col-sm-2">
+					Total records: [[${totalItems}]]
+				</div>
+				<div class="col-sm-1">
+					<span th:each="page : ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != page}" th:href="@{'/case/page/' + ${page} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${page}]]</a>
+						<span th:unless="${currentPage != page}">[[${page}]]</span> &nbsp; &nbsp;
+					</span>
+				</div>
+				<div class="col-sm-1">
+					<a th:if="${currentPage < totalPages}" th:href="@{'/case/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+					<span th:unless="${currentPage < totalPages}">Next</span>
+				</div>
+				<div class="col-sm-1">
+					<a th:if="${currentPage < totalPages}" th:href="@{'/case/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+					<span th:unless="${currentPage < totalPages}">Last</span>
+				</div>
+			</div>
+		</div>
 	</div>
 	<footer th:replace="fragments/footer"></footer>
 </body>

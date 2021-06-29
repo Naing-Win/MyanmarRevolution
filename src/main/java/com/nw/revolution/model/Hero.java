@@ -65,7 +65,7 @@ public class Hero implements Serializable {
 	@Column(name = "how_to_dead")
 	private String howToDead;
 	
-	@NotBlank(message = "Please select a image file.")
+	//@NotBlank(message = "Please select a image file.")
 	@Column(name = "image_for_hero")
 	private String imageForHero;
 	

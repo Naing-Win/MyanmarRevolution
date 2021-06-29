@@ -1,10 +1,13 @@
 package com.nw.revolution.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,13 +38,8 @@ public class HeroController {
 	*/
 
 	@GetMapping("/list")
-	public String indexPage(Model model, @Param("keyword") String keyword) {
-		if (keyword != null) {
-			model.addAttribute("heros", heroService.findHeroByKeyword(keyword));
-		} else {
-			model.addAttribute("heros", heroService.findAll());
-		}
-		return "index";
+	public String indexPage(Model model, String keyword) {
+		return getPaginated(1, "revolutionHeroName", "asc", keyword, model);
 	}
 
 	@GetMapping("/create")
@@ -118,6 +116,25 @@ public class HeroController {
 		}
 		*/
 		return "redirect:/hero/list";
+	}
+	
+	@GetMapping("/page/{pageNo}")
+	public String getPaginated(@PathVariable("pageNo") int pageNo, @RequestParam("sortField") String sortField , @RequestParam("sortDir") String sortDir, @Param("keyword") String keyword, Model model) {
+		int pageSize = 4;
+        Page<Hero> page = heroService.getPaginated(pageNo, pageSize, sortField, sortDir);
+        List<Hero> heros = page.getContent();
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc": "asc");
+        if (keyword != null) {
+			model.addAttribute("heros", heroService.findHeroByKeyword(keyword, PageRequest.of(pageNo - 1, pageSize)));
+		} else {
+			model.addAttribute("heros", heros);
+		}
+        return "index";
 	}
 	
 }

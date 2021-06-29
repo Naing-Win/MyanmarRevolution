@@ -54,8 +54,9 @@
 				</div>
 				<div class="col-sm-4">
 					<label>Image</label>
-					<input required="required" type="file" name="file" class="form-control" accept="image/jpg, image/jpeg" th:classappend="${#fields.hasErrors('imageForHero') ? 'is-invalid' : ''}">
-					<span class="invalid-feedback" th:if="${#fields.hasErrors('imageForHero')}" th:errors="*{imageForHero}" style="color: red;"></span>
+					<!-- <input required="required" type="file" name="file" class="form-control" accept="image/jpg, image/jpeg" th:classappend="${#fields.hasErrors('imageForHero') ? 'is-invalid' : ''}">
+					<span class="invalid-feedback" th:if="${#fields.hasErrors('imageForHero')}" th:errors="*{imageForHero}" style="color: red;"></span> -->
+					<input required="required" type="file" name="file" class="form-control" accept="image/jpg, image/jpeg">
 				</div>
 			</div>
 			<div>

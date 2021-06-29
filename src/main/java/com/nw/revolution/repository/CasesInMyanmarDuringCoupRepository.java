@@ -1,7 +1,7 @@
 package com.nw.revolution.repository;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,5 +14,5 @@ public interface CasesInMyanmarDuringCoupRepository extends JpaRepository<CasesI
 
 	//@Query(value = "select * from cases_in_myanmar_during_coup where division like %?1%", nativeQuery = true)
 	@Query(value="SELECT * FROM cases_in_myanmar_during_coup WHERE case_title like %:keyword% or division like %:keyword%  or city_or_state like %:keyword%",nativeQuery = true)
-	public List<CasesInMyanmarDuringCoup> findByKeyword(@Param("keyword") String keyword);
+	public Page<CasesInMyanmarDuringCoup> findByKeyword(@Param("keyword") String keyword, Pageable pageable);
 }
