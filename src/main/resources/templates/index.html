@@ -68,12 +68,12 @@
 	                </span>
 	            </div>
 	            <div class="col-sm-1">
-	                <a th:if="${currentPage < totalPages}" th:href="@{'/hero/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
-	                <span th:unless="${currentPage < totalPages}">Next</span>
+	                <a th:if="${currentPage < totalPages}" th:href="@{'/hero/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" style="text-decoration: none;">Next</a>
+	                <span th:unless="${currentPage < totalPages}" style="text-decoration: none;">Next</span>
 	            </div>
 	            <div class="col-sm-1">
-	                <a th:if="${currentPage < totalPages}" th:href="@{'/hero/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
-	                <span th:unless="${currentPage < totalPages}">Last</span>
+	                <a th:if="${currentPage < totalPages}" th:href="@{'/hero/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" style="text-decoration: none;">Last</a>
+	                <span th:unless="${currentPage < totalPages}" style="text-decoration: none;">Last</span>
 	            </div>
 	        </div>
     	</div>

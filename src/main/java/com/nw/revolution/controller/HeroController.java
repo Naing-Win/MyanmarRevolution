@@ -24,7 +24,7 @@ import com.nw.revolution.model.Hero;
 import com.nw.revolution.service.HeroServiceImpl;
 
 @Controller
-@RequestMapping("/hero")
+@RequestMapping(value = {"hero", "/"})
 public class HeroController {
 
 	@Autowired
@@ -37,7 +37,7 @@ public class HeroController {
 	}
 	*/
 
-	@GetMapping("/list")
+	@GetMapping(value = {"/list", ""})
 	public String indexPage(Model model, String keyword) {
 		return getPaginated(1, "revolutionHeroName", "asc", keyword, model);
 	}

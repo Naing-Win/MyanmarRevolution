@@ -56,7 +56,7 @@ public class CasesInMyanmarDuringCoup implements Serializable {
 	@Column(name = "village_or_ward")
 	private String villageOrWard;
 	
-	@NotBlank(message = "Please select a image file.")
+	//@NotBlank(message = "Please select a image file.")
 	@Column(name = "image_for_case")
 	private String imageForCase;
 	
