@@ -4,5 +4,4 @@
 # Hero List
 - Protesting against to the military coup
 
-![heroes](https://user-images.githubusercontent.com/45649966/158002756-f19e6080-96d0-44ae-8b08-f7ab64d4bf34.PNG)
-![ScreenShot](https://user-images.githubusercontent.com/45649966/158002756-f19e6080-96d0-44ae-8b08-f7ab64d4bf34.PNG)
+![heroes](https://user-images.githubusercontent.com/45649966/158003144-1163e485-3f9a-4975-a9b5-082eab0efa1b.jpg)
