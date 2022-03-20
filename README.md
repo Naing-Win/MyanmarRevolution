@@ -14,5 +14,7 @@
 ![c_list](https://user-images.githubusercontent.com/45649966/159103095-1c97cf65-8df0-465a-94fa-81147b7657b3.PNG)
 # Case Detail
 ![c_d](https://user-images.githubusercontent.com/45649966/159103115-4aa24ca8-df20-45a6-baf4-47e1ab1a9282.PNG)
+# Case Create
+![c_c](https://user-images.githubusercontent.com/45649966/159158259-973442c1-4b3f-470b-81c7-9b5387e09966.PNG)
 # Case Edit
 ![c_e](https://user-images.githubusercontent.com/45649966/159103137-8740071c-bd65-4df5-9e30-d5777d2a412b.PNG)
